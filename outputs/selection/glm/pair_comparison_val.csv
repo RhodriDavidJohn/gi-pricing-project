@@ -1,0 +1,5 @@
+frequency,severity,val_gini
+poisson,log_normal,0.30096332895970934
+negative_binomial,log_normal,0.3004766664369014
+poisson,gamma,0.2920511659761311
+negative_binomial,gamma,0.29181500856984144

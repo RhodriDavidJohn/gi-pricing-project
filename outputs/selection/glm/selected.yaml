@@ -1,0 +1,26 @@
+frequency:
+  family: poisson
+  terms:
+  - DrivAgeBand
+  - VehAgeBand
+  - VehPowerBand
+  - BonusMalusCapped
+  - LogDensity
+  - AreaCode
+  - VehBrand
+  - VehGas
+  - Region
+  - VehAgeBand:VehBrand
+  - NewVehAge:YoungDrivAge
+severity:
+  family: log_normal
+  terms:
+  - DrivAgeBand
+  - VehAgeBand
+  - VehPowerBand
+  - BonusMalusCapped
+  - LogDensity
+  - AreaCode
+  - VehBrand
+  - VehGas
+  - Region

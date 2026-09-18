@@ -1,0 +1,10 @@
+Detail,Value,Reference,FrequencyEffect,SeverityEffect,LogEffect,Factor,PremiumImpact
+DrivAge,50,44,0.0,0.0,0.0,1.0,0.0
+BonusMalus,50,50,0.0,0.0,0.0,1.0,0.0
+VehAge,2,6,0.0,0.0,0.0,1.0,0.0
+VehPower,6,6,0.0,0.0,0.0,1.0,0.0
+VehBrand,B12,B12,0.0,0.0,0.0,1.0,0.0
+VehGas,Regular,Regular,0.0,0.0,0.0,1.0,0.0
+Density,393,393,0.0,0.0,0.0,1.0,0.0
+Area,C,C,0.0,0.0,0.0,1.0,0.0
+Region,R24,R24,0.0,0.0,0.0,1.0,0.0

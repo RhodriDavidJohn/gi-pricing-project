@@ -1,0 +1,76 @@
+{
+  "frequency": {
+    "simple": {
+      "poisson_deviance": 0.30467551946640015,
+      "mse": 0.0557766817510128,
+      "gini": 0.3221328798376144
+    },
+    "hurdle": {
+      "poisson_deviance": 0.2973044424272719,
+      "mse": 0.05524530089312501,
+      "gini": 0.31452523843758184
+    }
+  },
+  "hurdle_classifier_test": {
+    "log_loss": 0.18663140612317075,
+    "brier_score": 0.04598363657155275,
+    "pr_auc_average_precision": 0.1423218902328774,
+    "pr_auc_trapezoidal": 0.14218497386804144
+  },
+  "test_pure_premium": {
+    "rebase_factor": 1.2314622627715892,
+    "minimum_premium": 74.98237219435208,
+    "share_raised_to_minimum": 0.0486419916963489,
+    "predicted": {
+      "total_actual_loss": 10340223.17,
+      "total_earned_premium": 8965955.397297343,
+      "loss_ratio": 1.1532762223105537,
+      "gini": 0.24033135963785401
+    },
+    "rebased": {
+      "total_actual_loss": 10340223.17,
+      "total_earned_premium": 11041235.72146493,
+      "loss_ratio": 0.9365095928436603,
+      "gini": 0.24033135963785401
+    },
+    "annual_tariff": {
+      "total_actual_loss": 10340223.17,
+      "total_earned_premium": 11062333.73686454,
+      "loss_ratio": 0.9347234874628532,
+      "gini": 0.24001039170879102
+    },
+    "all_monthly": {
+      "total_actual_loss": 10340223.17,
+      "total_earned_premium": 11726078.609960604,
+      "loss_ratio": 0.8818142461723391,
+      "gini": 0.24000176054264666
+    }
+  },
+  "selected": {
+    "frequency_type": "hurdle",
+    "tuned_params": {
+      "simple_count": {
+        "learning_rate": 0.1,
+        "max_depth": 5
+      },
+      "hurdle_classifier": {
+        "learning_rate": 0.05,
+        "max_depth": 5
+      },
+      "hurdle_count": {
+        "learning_rate": 0.1,
+        "max_depth": 5
+      },
+      "severity": {
+        "learning_rate": 0.05,
+        "max_depth": 3
+      }
+    },
+    "n_trees": {
+      "simple_count": 196,
+      "hurdle_classifier": 284,
+      "hurdle_count": 34,
+      "severity": 19
+    }
+  }
+}

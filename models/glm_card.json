@@ -1,0 +1,156 @@
+{
+  "model": "glm",
+  "trained_at": "2026-09-18T13:53:07",
+  "raw_data": "/Users/rhodridavies/Documents/career_development/Actuarial-Learning/Projects/GI Pricing/data/raw",
+  "large_claim_cap": 34386.98710000053,
+  "n_fit": 610211,
+  "n_holdout": 67802,
+  "selection": {
+    "frequency": {
+      "family": "poisson",
+      "terms": [
+        "DrivAgeBand",
+        "VehAgeBand",
+        "VehPowerBand",
+        "BonusMalusCapped",
+        "LogDensity",
+        "AreaCode",
+        "VehBrand",
+        "VehGas",
+        "Region",
+        "VehAgeBand:VehBrand",
+        "NewVehAge:YoungDrivAge"
+      ]
+    },
+    "severity": {
+      "family": "log_normal",
+      "terms": [
+        "DrivAgeBand",
+        "VehAgeBand",
+        "VehPowerBand",
+        "BonusMalusCapped",
+        "LogDensity",
+        "AreaCode",
+        "VehBrand",
+        "VehGas",
+        "Region"
+      ]
+    }
+  },
+  "nb_alpha": null,
+  "frequency_aic": 252561.97714735975,
+  "severity_aic": 67311.32386903654,
+  "rebase_factor": 0.8274507816079896,
+  "minimum_premium": 64.02387611097413,
+  "holdout": {
+    "total_actual_loss": 5201124.2,
+    "total_earned_premium": 5201124.199999999,
+    "loss_ratio": 1.0000000000000002,
+    "gini": 0.2741857893435894
+  },
+  "input_fields": {
+    "DrivAge": {
+      "type": "integer",
+      "min": 18,
+      "max": 100,
+      "default": 44
+    },
+    "BonusMalus": {
+      "type": "integer",
+      "min": 50,
+      "max": 230,
+      "default": 50
+    },
+    "VehAge": {
+      "type": "integer",
+      "min": 0,
+      "max": 100,
+      "default": 6
+    },
+    "VehPower": {
+      "type": "integer",
+      "min": 4,
+      "max": 15,
+      "default": 6
+    },
+    "VehBrand": {
+      "type": "category",
+      "options": [
+        "B1",
+        "B10",
+        "B11",
+        "B12",
+        "B13",
+        "B14",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ],
+      "default": "B12"
+    },
+    "VehGas": {
+      "type": "category",
+      "options": [
+        "Diesel",
+        "Regular"
+      ],
+      "default": "Regular"
+    },
+    "Density": {
+      "type": "integer",
+      "min": 1,
+      "max": 27000,
+      "default": 393
+    },
+    "Area": {
+      "type": "category",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "default": "C"
+    },
+    "Region": {
+      "type": "category",
+      "options": [
+        "R11",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R31",
+        "R41",
+        "R42",
+        "R43",
+        "R52",
+        "R53",
+        "R54",
+        "R72",
+        "R73",
+        "R74",
+        "R82",
+        "R83",
+        "R91",
+        "R93",
+        "R94"
+      ],
+      "default": "R24"
+    }
+  },
+  "example_quote": {
+    "AnnualFrequency": 0.08915975667674823,
+    "AverageClaimCost": 1738.045677184874,
+    "PurePremium": 128.2248592370568,
+    "AnnualPremium": 128.2248592370568,
+    "MonthlyPremium": 11.326529232606683,
+    "MinimumPremiumApplied": false
+  }
+}

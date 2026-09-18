@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# data and generated outputs
+data/raw/*
+!data/raw/.gitkeep
+data/processed/
+# selection outputs are committed for the app, apart from the large per-policy files
+outputs/**/test_predictions.csv
+outputs/**/tariff_sheet.csv

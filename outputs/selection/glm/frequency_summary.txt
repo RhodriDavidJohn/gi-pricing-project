@@ -1,0 +1,85 @@
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:                ClaimNb   No. Observations:               406807
+Model:                            GLM   Df Residuals:                   406737
+Model Family:                 Poisson   Df Model:                           69
+Link Function:                    Log   Scale:                          1.0000
+Method:                          IRLS   Log-Likelihood:                -84047.
+Date:                Fri, 18 Sep 2026   Deviance:                   1.2651e+05
+Time:                        13:52:32   Pearson chi2:                 9.24e+05
+No. Iterations:                     7   Pseudo R-squ. (CS):            0.01896
+Covariance Type:            nonrobust                                         
+===================================================================================================================================================================
+                                                                                                      coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Intercept                                                                                          -3.6868      0.046    -80.143      0.000      -3.777      -3.597
+C(DrivAgeBand, Treatment(reference='51-70'))[T.18-20]                                               0.1799      0.055      3.285      0.001       0.073       0.287
+C(DrivAgeBand, Treatment(reference='51-70'))[T.21-25]                                              -0.1915      0.036     -5.307      0.000      -0.262      -0.121
+C(DrivAgeBand, Treatment(reference='51-70'))[T.26-30]                                              -0.3622      0.028    -12.861      0.000      -0.417      -0.307
+C(DrivAgeBand, Treatment(reference='51-70'))[T.31-40]                                              -0.2290      0.020    -11.504      0.000      -0.268      -0.190
+C(DrivAgeBand, Treatment(reference='51-70'))[T.41-50]                                               0.0586      0.018      3.183      0.001       0.023       0.095
+C(DrivAgeBand, Treatment(reference='51-70'))[T.71+]                                                 0.0236      0.029      0.818      0.413      -0.033       0.080
+C(VehAgeBand, Treatment(reference='1-10'))[T.0]                                                     0.1716      0.092      1.873      0.061      -0.008       0.351
+C(VehAgeBand, Treatment(reference='1-10'))[T.11+]                                                  -0.2608      0.030     -8.810      0.000      -0.319      -0.203
+C(VehPowerBand, Treatment(reference='6'))[T.4]                                                     -0.2279      0.024     -9.669      0.000      -0.274      -0.182
+C(VehPowerBand, Treatment(reference='6'))[T.5]                                                     -0.0236      0.021     -1.117      0.264      -0.065       0.018
+C(VehPowerBand, Treatment(reference='6'))[T.7]                                                     -0.0886      0.021     -4.233      0.000      -0.130      -0.048
+C(VehPowerBand, Treatment(reference='6'))[T.8]                                                     -0.3013      0.033     -9.048      0.000      -0.367      -0.236
+C(VehPowerBand, Treatment(reference='6'))[T.9+]                                                    -0.0060      0.025     -0.242      0.808      -0.054       0.042
+C(VehBrand, Treatment(reference='B1'))[T.B10]                                                      -0.0063      0.061     -0.105      0.916      -0.125       0.112
+C(VehBrand, Treatment(reference='B1'))[T.B11]                                                       0.1006      0.063      1.585      0.113      -0.024       0.225
+C(VehBrand, Treatment(reference='B1'))[T.B12]                                                      -0.1518      0.028     -5.469      0.000      -0.206      -0.097
+C(VehBrand, Treatment(reference='B1'))[T.B13]                                                       0.1305      0.060      2.167      0.030       0.012       0.248
+C(VehBrand, Treatment(reference='B1'))[T.B14]                                                       0.0812      0.132      0.617      0.537      -0.177       0.339
+C(VehBrand, Treatment(reference='B1'))[T.B2]                                                       -0.0064      0.025     -0.257      0.797      -0.055       0.042
+C(VehBrand, Treatment(reference='B1'))[T.B3]                                                        0.0230      0.034      0.681      0.496      -0.043       0.089
+C(VehBrand, Treatment(reference='B1'))[T.B4]                                                        0.0205      0.045      0.457      0.648      -0.067       0.108
+C(VehBrand, Treatment(reference='B1'))[T.B5]                                                        0.0679      0.039      1.736      0.082      -0.009       0.145
+C(VehBrand, Treatment(reference='B1'))[T.B6]                                                       -0.0240      0.044     -0.550      0.583      -0.110       0.062
+C(VehGas, Treatment(reference='Regular'))[T.Diesel]                                                -0.0618      0.015     -4.198      0.000      -0.091      -0.033
+C(Region, Treatment(reference='R24'))[T.R11]                                                       -0.1261      0.030     -4.150      0.000      -0.186      -0.067
+C(Region, Treatment(reference='R24'))[T.R21]                                                       -0.0044      0.108     -0.041      0.967      -0.215       0.206
+C(Region, Treatment(reference='R24'))[T.R22]                                                        0.0241      0.063      0.382      0.703      -0.100       0.148
+C(Region, Treatment(reference='R24'))[T.R23]                                                       -0.0927      0.075     -1.231      0.218      -0.240       0.055
+C(Region, Treatment(reference='R24'))[T.R25]                                                       -0.0116      0.053     -0.220      0.825      -0.115       0.091
+C(Region, Treatment(reference='R24'))[T.R26]                                                       -0.0854      0.060     -1.414      0.157      -0.204       0.033
+C(Region, Treatment(reference='R24'))[T.R31]                                                       -0.1314      0.041     -3.226      0.001      -0.211      -0.052
+C(Region, Treatment(reference='R24'))[T.R41]                                                       -0.2573      0.054     -4.806      0.000      -0.362      -0.152
+C(Region, Treatment(reference='R24'))[T.R42]                                                       -0.0973      0.112     -0.865      0.387      -0.318       0.123
+C(Region, Treatment(reference='R24'))[T.R43]                                                       -0.3403      0.183     -1.857      0.063      -0.700       0.019
+C(Region, Treatment(reference='R24'))[T.R52]                                                       -0.0491      0.032     -1.536      0.125      -0.112       0.014
+C(Region, Treatment(reference='R24'))[T.R53]                                                        0.0303      0.028      1.065      0.287      -0.026       0.086
+C(Region, Treatment(reference='R24'))[T.R54]                                                       -0.1344      0.044     -3.028      0.002      -0.221      -0.047
+C(Region, Treatment(reference='R24'))[T.R72]                                                       -0.1828      0.039     -4.698      0.000      -0.259      -0.107
+C(Region, Treatment(reference='R24'))[T.R73]                                                       -0.1646      0.052     -3.156      0.002      -0.267      -0.062
+C(Region, Treatment(reference='R24'))[T.R74]                                                        0.1781      0.079      2.253      0.024       0.023       0.333
+C(Region, Treatment(reference='R24'))[T.R82]                                                        0.0147      0.024      0.604      0.546      -0.033       0.062
+C(Region, Treatment(reference='R24'))[T.R83]                                                       -0.3174      0.092     -3.432      0.001      -0.499      -0.136
+C(Region, Treatment(reference='R24'))[T.R91]                                                       -0.1364      0.037     -3.662      0.000      -0.209      -0.063
+C(Region, Treatment(reference='R24'))[T.R93]                                                       -0.0505      0.027     -1.879      0.060      -0.103       0.002
+C(Region, Treatment(reference='R24'))[T.R94]                                                        0.0575      0.085      0.676      0.499      -0.109       0.224
+C(VehAgeBand, Treatment(reference='1-10'))[T.0]:C(VehBrand, Treatment(reference='B1'))[T.B10]       0.0620      0.227      0.273      0.785      -0.383       0.507
+C(VehAgeBand, Treatment(reference='1-10'))[T.11+]:C(VehBrand, Treatment(reference='B1'))[T.B10]     0.1226      0.098      1.248      0.212      -0.070       0.315
+C(VehAgeBand, Treatment(reference='1-10'))[T.0]:C(VehBrand, Treatment(reference='B1'))[T.B11]      -0.1334      0.249     -0.536      0.592      -0.621       0.355
+C(VehAgeBand, Treatment(reference='1-10'))[T.11+]:C(VehBrand, Treatment(reference='B1'))[T.B11]     0.1012      0.108      0.934      0.350      -0.111       0.314
+C(VehAgeBand, Treatment(reference='1-10'))[T.0]:C(VehBrand, Treatment(reference='B1'))[T.B12]       1.5299      0.096     15.995      0.000       1.342       1.717
+C(VehAgeBand, Treatment(reference='1-10'))[T.11+]:C(VehBrand, Treatment(reference='B1'))[T.B12]    -0.0573      0.104     -0.551      0.582      -0.261       0.147
+C(VehAgeBand, Treatment(reference='1-10'))[T.0]:C(VehBrand, Treatment(reference='B1'))[T.B13]       0.3792      0.280      1.355      0.176      -0.169       0.928
+C(VehAgeBand, Treatment(reference='1-10'))[T.11+]:C(VehBrand, Treatment(reference='B1'))[T.B13]    -0.2344      0.126     -1.856      0.063      -0.482       0.013
+C(VehAgeBand, Treatment(reference='1-10'))[T.0]:C(VehBrand, Treatment(reference='B1'))[T.B14]       0.6727      0.410      1.640      0.101      -0.131       1.477
+C(VehAgeBand, Treatment(reference='1-10'))[T.11+]:C(VehBrand, Treatment(reference='B1'))[T.B14]    -0.4317      0.212     -2.038      0.042      -0.847      -0.017
+C(VehAgeBand, Treatment(reference='1-10'))[T.0]:C(VehBrand, Treatment(reference='B1'))[T.B2]        0.0617      0.123      0.501      0.616      -0.180       0.303
+C(VehAgeBand, Treatment(reference='1-10'))[T.11+]:C(VehBrand, Treatment(reference='B1'))[T.B2]      0.0025      0.042      0.060      0.952      -0.080       0.085
+C(VehAgeBand, Treatment(reference='1-10'))[T.0]:C(VehBrand, Treatment(reference='B1'))[T.B3]        0.3173      0.142      2.233      0.026       0.039       0.596
+C(VehAgeBand, Treatment(reference='1-10'))[T.11+]:C(VehBrand, Treatment(reference='B1'))[T.B3]     -0.0489      0.064     -0.762      0.446      -0.175       0.077
+C(VehAgeBand, Treatment(reference='1-10'))[T.0]:C(VehBrand, Treatment(reference='B1'))[T.B4]        0.3021      0.199      1.520      0.128      -0.087       0.692
+C(VehAgeBand, Treatment(reference='1-10'))[T.11+]:C(VehBrand, Treatment(reference='B1'))[T.B4]     -0.1648      0.096     -1.716      0.086      -0.353       0.023
+C(VehAgeBand, Treatment(reference='1-10'))[T.0]:C(VehBrand, Treatment(reference='B1'))[T.B5]       -0.2223      0.239     -0.929      0.353      -0.691       0.247
+C(VehAgeBand, Treatment(reference='1-10'))[T.11+]:C(VehBrand, Treatment(reference='B1'))[T.B5]     -0.0285      0.070     -0.405      0.686      -0.167       0.110
+C(VehAgeBand, Treatment(reference='1-10'))[T.0]:C(VehBrand, Treatment(reference='B1'))[T.B6]        0.4245      0.196      2.162      0.031       0.040       0.809
+C(VehAgeBand, Treatment(reference='1-10'))[T.11+]:C(VehBrand, Treatment(reference='B1'))[T.B6]     -0.0218      0.087     -0.251      0.801      -0.192       0.148
+BonusMalusCapped                                                                                    0.0227      0.000     51.908      0.000       0.022       0.024
+LogDensity                                                                                          0.0293      0.016      1.890      0.059      -0.001       0.060
+AreaCode                                                                                            0.0175      0.021      0.840      0.401      -0.023       0.058
+NewVehAge:YoungDrivAge                                                                             -0.3420      0.073     -4.660      0.000      -0.486      -0.198
+===================================================================================================================================================================

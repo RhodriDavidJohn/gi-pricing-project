@@ -1,0 +1,153 @@
+{
+  "model": "xgb",
+  "trained_at": "2026-09-18T13:53:10",
+  "raw_data": "/Users/rhodridavies/Documents/career_development/Actuarial-Learning/Projects/GI Pricing/data/raw",
+  "large_claim_cap": 34386.98710000053,
+  "n_fit": 610211,
+  "n_holdout": 67802,
+  "selection": {
+    "frequency_type": "hurdle",
+    "tuned_params": {
+      "simple_count": {
+        "learning_rate": 0.1,
+        "max_depth": 5
+      },
+      "hurdle_classifier": {
+        "learning_rate": 0.05,
+        "max_depth": 5
+      },
+      "hurdle_count": {
+        "learning_rate": 0.1,
+        "max_depth": 5
+      },
+      "severity": {
+        "learning_rate": 0.05,
+        "max_depth": 3
+      }
+    },
+    "n_trees": {
+      "simple_count": 196,
+      "hurdle_classifier": 284,
+      "hurdle_count": 34,
+      "severity": 19
+    }
+  },
+  "n_trees": {
+    "hurdle_classifier": 367,
+    "hurdle_count": 65,
+    "severity": 19
+  },
+  "rebase_factor": 1.1518805038115756,
+  "minimum_premium": 68.65427837406801,
+  "holdout": {
+    "total_actual_loss": 5201124.2,
+    "total_earned_premium": 5201124.199999999,
+    "loss_ratio": 1.0000000000000002,
+    "gini": 0.26166029372128197
+  },
+  "input_fields": {
+    "DrivAge": {
+      "type": "integer",
+      "min": 18,
+      "max": 100,
+      "default": 44
+    },
+    "BonusMalus": {
+      "type": "integer",
+      "min": 50,
+      "max": 230,
+      "default": 50
+    },
+    "VehAge": {
+      "type": "integer",
+      "min": 0,
+      "max": 100,
+      "default": 6
+    },
+    "VehPower": {
+      "type": "integer",
+      "min": 4,
+      "max": 15,
+      "default": 6
+    },
+    "VehBrand": {
+      "type": "category",
+      "options": [
+        "B1",
+        "B10",
+        "B11",
+        "B12",
+        "B13",
+        "B14",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ],
+      "default": "B12"
+    },
+    "VehGas": {
+      "type": "category",
+      "options": [
+        "Diesel",
+        "Regular"
+      ],
+      "default": "Regular"
+    },
+    "Density": {
+      "type": "integer",
+      "min": 1,
+      "max": 27000,
+      "default": 393
+    },
+    "Area": {
+      "type": "category",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "default": "C"
+    },
+    "Region": {
+      "type": "category",
+      "options": [
+        "R11",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R31",
+        "R41",
+        "R42",
+        "R43",
+        "R52",
+        "R53",
+        "R54",
+        "R72",
+        "R73",
+        "R74",
+        "R82",
+        "R83",
+        "R91",
+        "R93",
+        "R94"
+      ],
+      "default": "R24"
+    }
+  },
+  "example_quote": {
+    "AnnualFrequency": 0.05537627043916707,
+    "AverageClaimCost": 1656.0411376953125,
+    "PurePremium": 105.63364150451558,
+    "AnnualPremium": 105.63364150451558,
+    "MonthlyPremium": 9.330971666232209,
+    "MinimumPremiumApplied": false
+  }
+}

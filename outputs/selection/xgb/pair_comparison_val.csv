@@ -1,0 +1,3 @@
+frequency,severity,val_gini
+hurdle,xgb,0.31529390080643105
+simple,xgb,0.2996027318019574

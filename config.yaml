@@ -1,0 +1,151 @@
+# Relative paths are resolved from the folder this file is in (the project root).
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  output_dir: outputs      # selection reports
+  model_dir: models        # final trained models
+  report_dir: reports      # charts and results write-up (commit these to GitHub)
+
+random_state: 42
+
+split:
+  val_size: 0.2
+  test_size: 0.2
+
+features:
+  # <300 is rural, [300, 1500) is suburban, 1500+ is urban
+  density_bins: [0, 300, 1500]
+  density_labels: [Rural, Suburban, Urban]
+  young_driver_max_age: 25
+  old_driver_min_age: 70
+  new_vehicle_max_age: 1
+  old_vehicle_min_age: 10
+  high_power_min: 8
+  good_bonus_max: 100
+  flag_brand: B12
+  # rating factor pre-processing from Noll, Salzmann & Wüthrich (2018), case study on this data
+  caps:
+    ClaimNb: 4        # more claims than this is treated as a data error
+    Exposure: 1       # policies are at most one year
+  bonus_malus_cap: 150
+  # groups: [edge, next edge), last group open-ended -> e.g. DrivAgeBand "18-20", "71+"
+  bands:
+    DrivAge: [18, 21, 26, 31, 41, 51, 71]
+    VehAge: [0, 1, 11]
+    VehPower: [4, 5, 6, 7, 8, 9]
+  # claim amounts are capped at this percentile for the severity models (null = no cap); the cost
+  # above the cap is spread over all policies by the rebase factor
+  large_claim_percentile: 99.5
+
+glm:
+  # rating factors (names of feature columns). Text / grouped factors are fitted as categories,
+  # with the level holding the most exposure as the base level.
+  covariates:
+    - DrivAgeBand
+    - VehAgeBand
+    - VehPowerBand
+    - BonusMalusCapped
+    - LogDensity
+    - AreaCode
+    - VehBrand
+    - VehGas
+    - Region
+  # candidate interactions (same list for frequency and severity), each with the reason to test it
+  interactions_to_test:
+    DrivAgeBand:BonusMalusCapped: bonus-malus means different things at different ages (new drivers start at 100)
+    YoungDrivAge:VehPower: young drivers in powerful cars
+    NewVehAge:YoungDrivAge: young drivers in new cars
+    LogDensity:BonusMalusCapped: claims history in busy vs quiet areas
+    VehAgeBand:VehBrand: brands differ in how their risk changes with vehicle age
+  # forward selection: keep adding the candidate that improves the criterion the most, while it
+  # improves it by at least min_improvement. BIC penalises extra parameters more than AIC, which
+  # matters with ~400k training policies and multi-level interactions.
+  criterion: bic                # aic or bic
+  min_improvement: 2
+  # negative binomial dispersion: null = estimate by maximum likelihood, or set a number
+  nb_alpha: null
+
+xgb:
+  # raw values rather than groups - the trees find their own splits. Text factors are passed as
+  # categories.
+  features:
+    - DrivAge
+    - BonusMalusCapped
+    - VehAge
+    - VehPower
+    - LogDensity
+    - AreaCode
+    - VehBrand
+    - VehGas
+    - Region
+  # trees are added until the eval-set score stops improving for early_stopping_rounds
+  n_estimators_max: 1000
+  early_stopping_rounds: 50
+  # every combination is tried for each model below; the best is picked by validation deviance
+  param_grid:
+    max_depth: [3, 5]
+    learning_rate: [0.05, 0.1]
+  # settings shared by all the models
+  common:
+    enable_categorical: true
+    tree_method: hist
+  # fixed settings for each model. monotone_constraints: 1 = the prediction can only go up as
+  # the feature goes up (a worse bonus-malus never lowers the expected claims)
+  hurdle_classifier:
+    max_delta_step: 1
+    eval_metric: logloss
+    monotone_constraints: {BonusMalusCapped: 1}
+  hurdle_count:
+    objective: count:poisson
+    eval_metric: poisson-nloglik
+    min_child_weight: 1
+  simple_count:
+    objective: count:poisson
+    eval_metric: poisson-nloglik
+    monotone_constraints: {BonusMalusCapped: 1}
+  severity:
+    objective: reg:gamma
+    eval_metric: gamma-deviance
+
+final:
+  # share of the data held back when training the final models, used for XGBoost early
+  # stopping and calibration, the rebase factor and the minimum premium
+  holdout_size: 0.1
+  models: [glm, xgb]
+
+pricing:
+  # if everyone chooses the annual rate the portfolio doesn't make profit
+  # aim to make a 3% profit by adding monthly fees for monthly payments
+  # assuming that 50% of people choose to pay monthly, the monthly fee should be 6%
+  monthly_loading: 0.06
+  # minimum annual premium, set at this percentile of the rebased validation/holdout
+  # premiums (null = no minimum premium)
+  minimum_premium_percentile: 5
+  n_deciles: 10
+
+report:
+  n_bands: 10                   # bands in the lift and double lift charts
+  large_claim_percentile: 99    # claims above this percentile count as large
+  # rating factor bands for the actual vs expected charts: [edge, next edge), last band open-ended
+  # (null = one band per value). Factors missing from the data are skipped.
+  factor_bands:
+    DrivAge: [18, 21, 26, 31, 41, 51, 61, 71, 81]
+    VehAge: [0, 1, 2, 5, 10, 15, 20]
+    BonusMalus: [50, 51, 60, 70, 80, 90, 100, 101, 125]
+    VehPower: null
+    Density: [1, 50, 300, 1500, 5000, 15000]
+    VehBrand: null
+    VehGas: null
+    Area: null
+    Region: null
+  # text factors whose values have a natural order (joined by lines; others are shown as dots)
+  ordered_categories: [Area]
+  # customers for the "why this price" charts, compared with the typical customer
+  # (details not given take the typical customer's values)
+  example_customers:
+    young_driver: {DrivAge: 20, VehAge: 0, VehPower: 12}
+    experienced_driver: {DrivAge: 50, BonusMalus: 50, VehAge: 2}
+
+app:
+  # model used on the quote page when it opens (glm or xgb); the page has a switch for the other
+  default_model: glm

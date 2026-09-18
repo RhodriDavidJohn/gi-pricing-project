@@ -1,0 +1,76 @@
+{
+  "frequency": {
+    "poisson": {
+      "poisson_deviance": 0.3120261344119274,
+      "mse": 0.05648572064324225,
+      "gini": 0.2822246633150869
+    },
+    "negative_binomial": {
+      "poisson_deviance": 0.3121170262436138,
+      "mse": 0.056667913936362814,
+      "gini": 0.2825840002082758
+    },
+    "nb_alpha": 0.790824278000272
+  },
+  "test_pure_premium": {
+    "rebase_factor": 0.8712129332428893,
+    "minimum_premium": 67.19594491685055,
+    "share_raised_to_minimum": 0.04786029807600127,
+    "predicted": {
+      "total_actual_loss": 10340223.17,
+      "total_earned_premium": 12559899.02074492,
+      "loss_ratio": 0.823272794862544,
+      "gini": 0.2577627622610723
+    },
+    "rebased": {
+      "total_actual_loss": 10340223.17,
+      "total_earned_premium": 10942346.467097674,
+      "loss_ratio": 0.9449731098436531,
+      "gini": 0.2577627622610723
+    },
+    "annual_tariff": {
+      "total_actual_loss": 10340223.17,
+      "total_earned_premium": 10978528.108115833,
+      "loss_ratio": 0.9418587872773246,
+      "gini": 0.2575717789899159
+    },
+    "all_monthly": {
+      "total_actual_loss": 10340223.17,
+      "total_earned_premium": 11637232.524005337,
+      "loss_ratio": 0.8885465808705068,
+      "gini": 0.2575694666041288
+    }
+  },
+  "selected": {
+    "frequency": {
+      "family": "poisson",
+      "terms": [
+        "DrivAgeBand",
+        "VehAgeBand",
+        "VehPowerBand",
+        "BonusMalusCapped",
+        "LogDensity",
+        "AreaCode",
+        "VehBrand",
+        "VehGas",
+        "Region",
+        "VehAgeBand:VehBrand",
+        "NewVehAge:YoungDrivAge"
+      ]
+    },
+    "severity": {
+      "family": "log_normal",
+      "terms": [
+        "DrivAgeBand",
+        "VehAgeBand",
+        "VehPowerBand",
+        "BonusMalusCapped",
+        "LogDensity",
+        "AreaCode",
+        "VehBrand",
+        "VehGas",
+        "Region"
+      ]
+    }
+  }
+}
